@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/dev/Android/TodoApp20/app/src/main/res/drawable/ic_no_data.xml" value="0.23020833333333332" />
         <entry key="..\:/dev/Android/TodoApp20/app/src/main/res/layout/activity_main.xml" value="0.184375" />
+        <entry key="..\:/dev/Android/TodoApp20/app/src/main/res/layout/fragment_list.xml" value="0.2" />
       </map>
     </option>
   </component>
