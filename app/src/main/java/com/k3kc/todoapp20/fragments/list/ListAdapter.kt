@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.k3kc.todoapp20.R
 import com.k3kc.todoapp20.data.models.Priority
@@ -20,6 +21,11 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.MyViewHolder>() {
         fun onBind(item: ToDoData) {
             binding.titleTxt.text = item.title
             binding.descriptionTxt.text = item.description
+
+            binding.rowBackground.setOnClickListener {
+                val action = ListFragmentDirections.actionListFragmentToUpdateFragment(item)
+                binding.root.findNavController().navigate(action)
+            }
 
             val priority = item.priority
             when(priority) {
