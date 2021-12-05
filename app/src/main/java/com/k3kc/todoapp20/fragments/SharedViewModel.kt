@@ -14,7 +14,7 @@ import com.k3kc.todoapp20.data.models.ToDoData
 
 class SharedViewModel(application: Application): AndroidViewModel(application) {
 
-    val emptyDatabase = MutableLiveData(true)
+    val emptyDatabase = MutableLiveData(false)
 
     val listener: AdapterView.OnItemSelectedListener = object : AdapterView.OnItemSelectedListener {
         override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
@@ -45,14 +45,6 @@ class SharedViewModel(application: Application): AndroidViewModel(application) {
             "Low Priority" -> { Priority.LOW }
             "Medium Priority" -> { Priority.MEDIUM }
             else -> Priority.LOW
-        }
-    }
-
-    fun parsePriorityToInt(priority: Priority): Int {
-        return when(priority) {
-            Priority.HIGH -> 0
-            Priority.MEDIUM -> 1
-            Priority.LOW -> 2
         }
     }
 
