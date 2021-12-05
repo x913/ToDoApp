@@ -20,21 +20,18 @@ class UpdateFragment : Fragment() {
     private val args by navArgs<UpdateFragmentArgs>()
     private val mSharedViewModel: SharedViewModel by viewModels()
     private val mTodoViewModel: ToDoViewModel by viewModels()
-    private lateinit var _binding: FragmentUpdateBinding
-    private val binding: FragmentUpdateBinding
-        get() = _binding
+    private var _binding: FragmentUpdateBinding? = null
+    private val binding
+        get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         setHasOptionsMenu(true)
         _binding = FragmentUpdateBinding.inflate(inflater, container, false)
-        _binding.currentTitleEt.setText(args.currentItem.title)
-        _binding.currentDescriptionEt.setText(args.currentItem.description)
-        _binding.currentPrioritiesSpinner.setSelection(mSharedViewModel.parsePriorityToInt(args.currentItem.priority))
-        return _binding.root
+        binding.args = args
+        return binding.root
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -86,5 +83,8 @@ class UpdateFragment : Fragment() {
         findNavController().navigate(R.id.action_updateFragment_to_listFragment)
     }
 
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }
