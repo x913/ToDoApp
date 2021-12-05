@@ -35,8 +35,16 @@ android {
         jvmTarget = '1.8'
     }
     buildFeatures {
-        viewBinding true
+//        viewBinding true
         dataBinding true
+    }
+
+    sourceSets {
+        main {
+            java {
+                srcDirs += 'build/generated/source/navigation-args'
+            }
+        }
     }
 }
 
